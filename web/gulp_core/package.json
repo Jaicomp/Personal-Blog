@@ -1,0 +1,30 @@
+{
+  "name": "gulp_core",
+  "version": "1.0.0",
+  "description": "Gulp Core",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jaicomp/Personal-Blog.git"
+  },
+  "keywords": [
+    "Personal",
+    "Blog",
+    "Jaicomp"
+  ],
+  "author": "Jaicomp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jaicomp/Personal-Blog/issues"
+  },
+  "homepage": "https://github.com/Jaicomp/Personal-Blog#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-jade": "^1.1.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-sass": "^2.3.2"
+  }
+}
