@@ -1,15 +1,14 @@
 body {
   padding: 10px;
-  background-color: #f7f7f7; }
+  background-color: #CCCCCC; }
   body #postContainer {
     margin: 0 auto;
-    width: 66.67%;
-    border: 1px solid blue; }
+    width: 66.67%; }
     body #postContainer .post {
       width: 17.66%;
       float: left;
       margin: 1%;
-      border: 1px solid red; }
+      background-color: #FFFFFF; }
       body #postContainer .post img {
         width: 100%; }
       body #postContainer .post ul {
@@ -19,9 +18,8 @@ body {
           font-weight: bold;
           font-size: 12px; }
       body #postContainer .post .title {
-        padding-left: 10%;
-        font-weight: bold;
-        padding-bottom: 10px; }
+        padding: 0px 10% 10px 10%;
+        font-weight: bold; }
       body #postContainer .post .author {
         padding-left: 10%;
         color: grey;

@@ -11,8 +11,7 @@ const server = http.createServer (function (req, resp) {
 		case "GET":
 					switch (true){
 						case req.url === "/":
-							var html = pug.renderFile('blog.pug');
-							console.log(html);						
+							var html = pug.renderFile('front/pug/blog.pug');
 							resp.writeHead(200, {'Content-Type': 'text/html'});
 							resp.end(html);
 
