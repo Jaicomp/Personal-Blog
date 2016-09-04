@@ -12,7 +12,8 @@ const server = http.createServer (function (req, resp) {
 						case "/":
 							var html = pug.renderFile('blog.pug');
 							console.log(html);						
-
+							resp.writeHead(200, {'Content-Type': 'text/html'});
+							resp.end(html);
 
 							break;
 

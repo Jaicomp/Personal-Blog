@@ -1,0 +1,35 @@
+body {
+  padding: 10px;
+  background-color: #f7f7f7; }
+  body #postContainer {
+    margin: 0 auto;
+    width: 66.67%;
+    border: 1px solid blue; }
+    body #postContainer .post {
+      width: 17.66%;
+      float: left;
+      margin: 1%;
+      border: 1px solid red; }
+      body #postContainer .post img {
+        width: 100%; }
+      body #postContainer .post ul {
+        padding-left: 15%;
+        color: red; }
+        body #postContainer .post ul li.tags {
+          font-weight: bold;
+          font-size: 12px; }
+      body #postContainer .post .title {
+        padding-left: 10%;
+        font-weight: bold;
+        padding-bottom: 10px; }
+      body #postContainer .post .author {
+        padding-left: 10%;
+        color: grey;
+        font-size: 13px; }
+      body #postContainer .post .date {
+        padding-left: 10%;
+        color: grey;
+        font-size: 13px;
+        padding-bottom: 10px; }
+      body #postContainer .post:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }

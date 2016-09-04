@@ -5,7 +5,7 @@ var gulp = require('gulp'),
 	livereload = require('gulp-livereload');
 
 //Listening all types of files: $ gulp
-gulp.task('default',function(){
+gulp.task('default', ['sass'],function(){
 	livereload.listen();
 	gulp.watch('../front/sass/*.sass', ['sass']);
 	gulp.watch('../front/html/*.html', ['html']);
