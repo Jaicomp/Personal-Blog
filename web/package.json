@@ -1,0 +1,24 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "Personal Blog",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jaicomp/Personal-Blog.git"
+  },
+  "keywords": [
+    "Personal",
+    "Blog",
+    "Jaicomp"
+  ],
+  "author": "Jaicomp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jaicomp/Personal-Blog/issues"
+  },
+  "homepage": "https://github.com/Jaicomp/Personal-Blog#readme"
+}
