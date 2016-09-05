@@ -1,8 +1,13 @@
+//Internal modules
 const http = require('http');
 const fs = require('fs');
+
+//Npm modules
 const pug = require('pug');
 
-const port = 8080;
+//Personal's Blog modules
+const httpMsgs = require('./httpMsgs');
+const settings = require('./settings');
 
 const server = http.createServer (function (req, resp) {
 
@@ -20,7 +25,7 @@ const server = http.createServer (function (req, resp) {
 						case /[a-z]*.css$/.test(req.url):
 								fs.readFile('.' + req.url, 'utf-8', function(error, content){
 									if (error){
-										console.log("ERROR");
+										httpMsgs.send404Error(resp);
 									}
 									resp.writeHead(200, {'Content-Type': 'text/css'});
 									resp.end(content);
@@ -29,26 +34,16 @@ const server = http.createServer (function (req, resp) {
 
 
 							default:
-								responseToWrongClientRequest(resp);
+								httpMsgs.send404Error(resp);
 					}
 				break;
 
 
 		default:
-			responseToWrongClientRequest(resp);
+			httpMsgs.send404Error(resp);
 	}
 
-}).listen(port, function(){
-	console.log("Connected at port: " + port);
+}).listen(settings.PORT, function(){
+	console.log("Connected at port: " + settings.PORT);
 });
-
-function responseToWrongClientRequest(resp){
-			resp.writeHead(400, {'Content-Type': 'text/plain'});
-			resp.end('Wrong request');
-	
-}
-
-
-
-
 
