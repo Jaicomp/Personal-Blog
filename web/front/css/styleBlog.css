@@ -31,3 +31,28 @@ body {
         padding-bottom: 10px; }
       body #postContainer .post:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+
+@media screen and (max-width: 1650px) {
+  body #postContainer .post {
+    width: 20%; } }
+
+@media screen and (max-width: 1200px) {
+  body #postContainer .post {
+    width: 25%; } }
+
+@media screen and (max-width: 1120px) {
+  body #postContainer .post {
+    width: 28%; } }
+
+@media screen and (max-width: 1000px) {
+  body #postContainer .post {
+    width: 40%; } }
+
+@media screen and (max-width: 600px) {
+  body #postContainer .post {
+    width: 100%; } }
+
+@media screen and (max-width: 400px) {
+  body #postContainer .post {
+    width: 100%;
+    margin-bottom: 10%; } }
