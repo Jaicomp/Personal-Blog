@@ -25,7 +25,7 @@ const server = http.createServer (function (req, resp) {
 						case /[a-z]*.css$/.test(req.url):
 								fs.readFile('.' + req.url, 'utf-8', function(error, content){
 									if (error){
-										httpMsgs.send404Error(resp);
+										httpMsgs.send404Error(resp, pug);
 									}
 									resp.writeHead(200, {'Content-Type': 'text/css'});
 									resp.end(content);
@@ -34,13 +34,13 @@ const server = http.createServer (function (req, resp) {
 
 
 							default:
-								httpMsgs.send404Error(resp);
+								httpMsgs.send404Error(resp, pug);
 					}
 				break;
 
 
 		default:
-			httpMsgs.send404Error(resp);
+			httpMsgs.send404Error(resp, pug);
 	}
 
 }).listen(settings.PORT, function(){
