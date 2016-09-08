@@ -6,8 +6,10 @@ body {
     width: 66.67%; }
     body #postContainer .post {
       width: 17.66%;
+			height: 350px;
       float: left;
       margin: 1%;
+			position: relative;
       background-color: #FFFFFF; }
       body #postContainer .post img {
         width: 100%; }
@@ -23,12 +25,18 @@ body {
       body #postContainer .post .author {
         padding-left: 10%;
         color: grey;
-        font-size: 13px; }
+        font-size: 13px; 
+				position: absolute;
+				bottom: 10%;
+				}
       body #postContainer .post .date {
         padding-left: 10%;
         color: grey;
         font-size: 13px;
-        padding-bottom: 10px; }
+        padding-bottom: 10px; 
+				position: absolute;
+				bottom: 1%;
+}
       body #postContainer .post:hover {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
 

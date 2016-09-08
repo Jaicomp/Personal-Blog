@@ -8,29 +8,13 @@ html
 		link(rel='stylesheet',href='front/css/styleBlog.css')
 		
 	body
+
 		#postContainer
 			.post 
 				img(src='http://ejohn.org/apps/workshop/adv-talk/jquery_logo.png', width='100',height='150')
 				ul
-					li.tags JAVASCRIPT
-				.title 10 jQuery Panorama Image Display Pubglins
+					li.tags #{tag}
+				.title #{title}
 				.author Jaime Crespi
-				.date 2 days ago
- 
-			.post
-				img(src='http://ejohn.org/apps/workshop/adv-talk/jquery_logo.png', width='100',height='150')
-				ul
-					li.tags JAVASCRIPT
-				.title 10 jQuery Panorama Image Display Pubglins
-				.author Jaime Crespi
-				.date 2 days ago
- 
-			.post
-				img(src='http://ejohn.org/apps/workshop/adv-talk/jquery_logo.png', width='100',height='150')
-				ul
-					li.tags JAVASCRIPT
-				.title 10 jQuery Panorama Image Display Pubglins
-				.author Jaime Crespi
-				.date 2 days ago
- 
-
+				.date #{date}
+ 			
