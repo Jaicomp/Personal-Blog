@@ -39,10 +39,12 @@ const server = http.createServer (function (req, resp) {
 										post.datePost = dateLastModificationFile.getDate() + " - " + (dateLastModificationFile.getMont() + 1) + " - " + dateLastModificationFile.getFullYear();	
 									}
 
-								posts["post-"+i] = post;
+								posts["post"+i] = post;
 							}
-							console.log(posts);
-							var html = pug.renderFile('front/pug/blog.pug', posts);
+
+							var contentPugPosts = {};
+							contentPugPosts.posts = posts;
+							var html = pug.renderFile('front/pug/blog.pug', contentPugPosts);
 							resp.writeHead(200, {'Content-Type': 'text/html'}); 
 							resp.end(html);
 

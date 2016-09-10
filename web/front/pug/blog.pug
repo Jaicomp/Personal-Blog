@@ -9,13 +9,12 @@ html
 	
 	body
 		#postContainer
-		- console.log(posts);
-		- for (post in posts) {
+			- for (i in posts) {
 			.post
-			img(src='http://ejohn.org/apps/workshop/adv-talk/jquery_logo.png', width='100',height='150')
-			ul
-				li.tags #{post.tagPost}
-			.title #{post.titlePost}
-			.author Jaime Crespi
-			.date #{post.datePost}
-		- }
+				img(src='http://ejohn.org/apps/workshop/adv-talk/jquery_logo.png', width='100',height='150')
+				ul
+					li.tags #{posts[i].tagPost}
+				.title #{posts[i].titlePost}
+				.author Jaime Crespi
+				.date #{posts[i].datePost}
+			- }
