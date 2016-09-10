@@ -26,8 +26,6 @@ const server = http.createServer (function (req, resp) {
 									var post = {};
 									post.tagPost = files[i].slice(0, files[i].indexOf('-'));
 									post.titlePost = files[i].slice(files[i].indexOf('-')+1, files[i].indexOf('.pug'));										
-									
-
 
 									var dateLastModificationFile = new Date(stats.mtime);
 									var actualDate = new Date();
@@ -41,9 +39,9 @@ const server = http.createServer (function (req, resp) {
 										post.datePost = dateLastModificationFile.getDate() + " - " + (dateLastModificationFile.getMont() + 1) + " - " + dateLastModificationFile.getFullYear();	
 									}
 
+								posts["post-"+i] = post;
 							}
-									posts["post-"+i] = post;
-							
+							console.log(posts);
 							var html = pug.renderFile('front/pug/blog.pug', posts);
 							resp.writeHead(200, {'Content-Type': 'text/html'}); 
 							resp.end(html);
