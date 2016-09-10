@@ -19,28 +19,36 @@ const server = http.createServer (function (req, resp) {
 
 							fs.readdir('./front/posts', function(err, files){
 								console.log(files);
-					
-								var tagPost = files[0].slice(0, files[0].indexOf('-'));
-								var titlePost = files[0].slice(files[0].indexOf('-')+1, files[0].indexOf('.pug'));										
-								fs.stat('front/posts/'+files[0], function(err, stats){
+								var posts = {};
+								for (var i = 0; i < files.length; i++){
+						
+									var stats = fs.statSync('front/posts/' + files[i]);
+									var post = {};
+									post.tagPost = files[i].slice(0, files[i].indexOf('-'));
+									post.titlePost = files[i].slice(files[i].indexOf('-')+1, files[i].indexOf('.pug'));										
+									
+
+
 									var dateLastModificationFile = new Date(stats.mtime);
 									var actualDate = new Date();
 									var daysAgo = actualDate.getDate() - dateLastModificationFile.getDate();
 									var datePost;
 									if(daysAgo == 0){
-										datePost = actualDate.getHours() - dateLastModificationFile.getHours() + " hours ago";
+										post.datePost = actualDate.getHours() - dateLastModificationFile.getHours() + " hours ago";
 									} else if (daysAgo < 31){
-										datePost = actualDate.getDate() - dateLastModificationFile.getDate() + " days ago";
+										post.datePost = actualDate.getDate() - dateLastModificationFile.getDate() + " days ago";
 									} else {
-										datePost = dateLastModificationFile.getDate() + " - " + (dateLastModificationFile.getMont() + 1) + " - " + dateLastModificationFile.getFullYear();	
+										post.datePost = dateLastModificationFile.getDate() + " - " + (dateLastModificationFile.getMont() + 1) + " - " + dateLastModificationFile.getFullYear();	
 									}
-								var html = pug.renderFile('front/pug/blog.pug', {tag: tagPost, title: titlePost, date: datePost});
-								resp.writeHead(200, {'Content-Type': 'text/html'}); 
-								resp.end(html);
 
-								});
+							}
+									posts["post-"+i] = post;
+							
+							var html = pug.renderFile('front/pug/blog.pug', posts);
+							resp.writeHead(200, {'Content-Type': 'text/html'}); 
+							resp.end(html);
 
-							});
+						});
 
 							break;
 
