@@ -5,6 +5,7 @@ body {
     margin: 0 auto;
     width: 66.67%; }
     body #postContainer .post {
+			text-decoration: none;
       width: 17.66%;
 			height: 350px;
       float: left;

@@ -18,29 +18,7 @@ const server = http.createServer (function (req, resp) {
 						case req.url === "/":
 
 							fs.readdir('./front/posts', function(err, files){
-								console.log(files);
-								var posts = {};
-								for (var i = 0; i < files.length; i++){
-						
-									var stats = fs.statSync('front/posts/' + files[i]);
-									var post = {};
-									post.tagPost = files[i].slice(0, files[i].indexOf('-'));
-									post.titlePost = files[i].slice(files[i].indexOf('-')+1, files[i].indexOf('.pug'));										
-
-									var dateLastModificationFile = new Date(stats.mtime);
-									var actualDate = new Date();
-									var daysAgo = actualDate.getDate() - dateLastModificationFile.getDate();
-									var datePost;
-									if(daysAgo == 0){
-										post.datePost = actualDate.getHours() - dateLastModificationFile.getHours() + " hours ago";
-									} else if (daysAgo < 31){
-										post.datePost = actualDate.getDate() - dateLastModificationFile.getDate() + " days ago";
-									} else {
-										post.datePost = dateLastModificationFile.getDate() + " - " + (dateLastModificationFile.getMont() + 1) + " - " + dateLastModificationFile.getFullYear();	
-									}
-
-								posts["post"+i] = post;
-							}
+							var posts = getPostsInfo(files);
 
 							var contentPugPosts = {};
 							contentPugPosts.posts = posts;
@@ -88,4 +66,34 @@ const server = http.createServer (function (req, resp) {
 }).listen(settings.PORT, function(){
 	console.log("Connected at port: " + settings.PORT);
 });
+
+function getPostsInfo(files) {
+	var posts = {};
+	for (var i = 0; i < files.length; i++){
+					
+		var stats = fs.statSync('front/posts/' + files[i]);
+		var post = {};
+		post.tagPost = files[i].slice(0, files[i].indexOf('-'));
+		post.titlePost = files[i].slice(files[i].indexOf('-')+1, files[i].indexOf('.pug'));										
+
+		var dateLastModificationFile = new Date(stats.mtime);
+		var actualDate = new Date();
+		var daysAgo = actualDate.getDate() - dateLastModificationFile.getDate();
+		var datePost;
+		if(daysAgo == 0){
+			post.datePost = actualDate.getHours() - dateLastModificationFile.getHours() + " hours ago";
+		} else if (daysAgo < 31){
+			post.datePost = actualDate.getDate() - dateLastModificationFile.getDate() + " days ago";
+		} else {
+			post.datePost = dateLastModificationFile.getDate() + " - " + (dateLastModificationFile.getMont() + 1) + " - " + dateLastModificationFile.getFullYear();	
+		}
+
+		posts["post"+i] = post;
+		}
+
+		return posts;
+
+}
+
+
 
