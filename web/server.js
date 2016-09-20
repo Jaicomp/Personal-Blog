@@ -51,8 +51,12 @@ const server = http.createServer (function (req, resp) {
 							});
 						break;
 
-
 							default:
+
+
+
+
+
 								httpMsgs.send404Error(resp, pug);
 					}
 				break;

@@ -10,7 +10,7 @@ html
 	body
 		#postContainer
 			- for (i in posts) {
-			a.post(href='#{posts[i].titlePost}')
+			a.post(href=''+posts[i].titlePost)
 				img(src='http://ejohn.org/apps/workshop/adv-talk/jquery_logo.png', width='100',height='150')
 				ul
 					li.tags #{posts[i].tagPost}
