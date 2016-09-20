@@ -22,9 +22,7 @@ const server = http.createServer (function (req, resp) {
 								var contentPugPosts = {};
 								contentPugPosts.posts = posts;
 								var html = pug.renderFile('front/pug/blog.pug', contentPugPosts);
-								resp.writeHead(200, {'Content-Type': 'text/html'}); 
-								resp.end(html);
-
+								httpMsgs.renderFile(resp, 'html', html);
 							});
 
 							break;
@@ -34,8 +32,7 @@ const server = http.createServer (function (req, resp) {
 									if (error)	{
 										httpMsgs.send404Error(resp, pug);
 									}
-									resp.writeHead(200, {'Content-Type': 'text/css'});
-									resp.end(content);
+									httpMsgs.renderFile(resp, 'css', content);
 								});
 						break;
 
@@ -45,15 +42,14 @@ const server = http.createServer (function (req, resp) {
 								if(error) {
 									httpMsgs.send404Error(resp, pug);
 								}
-								resp.writeHead(200, {'Content-Type': 'text/plain'});
-								resp.end(content);
+								httpMsgs.renderFile(resp, 'plain', content);
 								
 							});
 						break;
-
+					
 							default:
 
-
+								console.log(req.url);
 
 
 
