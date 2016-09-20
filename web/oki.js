@@ -18,7 +18,7 @@ const server = http.createServer (function (req, resp) {
 						case req.url === "/":
 
 							fs.readdir('./front/posts', function(err, files){
-								var posts = getPostsInfoSorted(files);
+								var posts = getPostsInfo(files);
 								var contentPugPosts = {};
 								contentPugPosts.posts = posts;
 								var html = pug.renderFile('front/pug/blog.pug', contentPugPosts);
@@ -66,15 +66,15 @@ const server = http.createServer (function (req, resp) {
 	console.log("Connected at port: " + settings.PORT);
 });
 
-function getPostsInfoSorted(files) {
+function getPostsInfo(files) {
 	var posts = {};
-	var statsFiles = sortFiles(files);
-
 	for (var i = 0; i < files.length; i++){
+					
+		var stats = fs.statSync('front/posts/' + files[i]);
 		var post = {};
 		post.tagPost = files[i].slice(0, files[i].indexOf('-'));
 		post.titlePost = files[i].slice(files[i].indexOf('-')+1, files[i].indexOf('.pug'));										
-		var dateLastModificationFile = new Date(statsFiles[i]);
+		var dateLastModificationFile = new Date(stats.mtime);
 		var actualDate = new Date();
 		var daysAgo = actualDate.getDate() - dateLastModificationFile.getDate();
 		var datePost;
@@ -87,33 +87,12 @@ function getPostsInfoSorted(files) {
 		}
 
 		posts["post"+i] = post;
-	
-	}
-
-
-
-		return posts;
-
-}
-
-
-function sortFiles(files) {
-	var statsFiles = [];
-
-	for (var i = 0; i < files.length; i++){
-		statsFiles[i] = fs.statSync('front/posts/' + files[i]).mtime;	
-		for (var j = i; j > 0; j--) {
-			if (new Date(statsFiles[j]) > new Date(statsFiles[j-1])) {
-				var aux = statsFiles[j];
-				statsFiles[j] = statsFiles[j-1];
-				statsFiles[j-1] = aux;
-			}
-
 		}
-	}
 
-	return statsFiles;
+		return sortPosts(posts);
+
 }
+
 
 
 
