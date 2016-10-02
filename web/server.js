@@ -48,12 +48,21 @@ const server = http.createServer (function (req, resp) {
 						break;
 					
 							default:
+								
+								fs.readdir('./front/posts', function(err, files){
+									for (var i = 0; i < files.length; i++) {
 
-								console.log(req.url);
+										var post = new RegExp(req.url.substring(1));
+										if (post.test(files[i].substring(files[i].indexOf('-')+1))) {
+											console.log('./front/posts/'+files[i]);
+								
+											var html = pug.renderFile('front/posts/'+files[i]);
+											httpMsgs.renderFile(resp, 'html', html);
+										}
+									}
+								});
 
-
-
-								httpMsgs.send404Error(resp, pug);
+								//httpMsgs.send404Error(resp, pug);
 					}
 				break;
 
